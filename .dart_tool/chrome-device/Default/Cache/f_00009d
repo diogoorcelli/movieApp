@@ -1,0 +1,315 @@
+define(['dart_sdk', 'packages/movie_app/models/movie_genre_model.dart', 'packages/movie_app/models/movie_company_model.dart', 'packages/movie_app/models/movie_country_model.dart', 'packages/movie_app/models/spoken_language_model.dart'], (function load__packages__movie_app__models__movie_detail_model_dart(dart_sdk, packages__movie_app__models__movie_genre_model$46dart, packages__movie_app__models__movie_company_model$46dart, packages__movie_app__models__movie_country_model$46dart, packages__movie_app__models__spoken_language_model$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const convert = dart_sdk.convert;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const movie_genre_model = packages__movie_app__models__movie_genre_model$46dart.models__movie_genre_model;
+  const movie_company_model = packages__movie_app__models__movie_company_model$46dart.models__movie_company_model;
+  const movie_country_model = packages__movie_app__models__movie_country_model$46dart.models__movie_country_model;
+  const spoken_language_model = packages__movie_app__models__spoken_language_model$46dart.models__spoken_language_model;
+  var movie_detail_model = Object.create(dart.library);
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    MapOfStringL$dynamic: () => (T.MapOfStringL$dynamic = dart.constFn(core.Map$(T.StringL(), dart.dynamic)))(),
+    MapLOfStringL$dynamic: () => (T.MapLOfStringL$dynamic = dart.constFn(dart.legacy(T.MapOfStringL$dynamic())))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    MovieGenreL: () => (T.MovieGenreL = dart.constFn(dart.legacy(movie_genre_model.MovieGenre)))(),
+    ListOfMovieGenreL: () => (T.ListOfMovieGenreL = dart.constFn(core.List$(T.MovieGenreL())))(),
+    dynamicToMovieGenreL: () => (T.dynamicToMovieGenreL = dart.constFn(dart.fnType(T.MovieGenreL(), [dart.dynamic])))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    ProductionCompanyModelL: () => (T.ProductionCompanyModelL = dart.constFn(dart.legacy(movie_company_model.ProductionCompanyModel)))(),
+    ListOfProductionCompanyModelL: () => (T.ListOfProductionCompanyModelL = dart.constFn(core.List$(T.ProductionCompanyModelL())))(),
+    dynamicToProductionCompanyModelL: () => (T.dynamicToProductionCompanyModelL = dart.constFn(dart.fnType(T.ProductionCompanyModelL(), [dart.dynamic])))(),
+    ProductionCountryModelL: () => (T.ProductionCountryModelL = dart.constFn(dart.legacy(movie_country_model.ProductionCountryModel)))(),
+    ListOfProductionCountryModelL: () => (T.ListOfProductionCountryModelL = dart.constFn(core.List$(T.ProductionCountryModelL())))(),
+    dynamicToProductionCountryModelL: () => (T.dynamicToProductionCountryModelL = dart.constFn(dart.fnType(T.ProductionCountryModelL(), [dart.dynamic])))(),
+    SpokenLanguageModelL: () => (T.SpokenLanguageModelL = dart.constFn(dart.legacy(spoken_language_model.SpokenLanguageModel)))(),
+    ListOfSpokenLanguageModelL: () => (T.ListOfSpokenLanguageModelL = dart.constFn(core.List$(T.SpokenLanguageModelL())))(),
+    dynamicToSpokenLanguageModelL: () => (T.dynamicToSpokenLanguageModelL = dart.constFn(dart.fnType(T.SpokenLanguageModelL(), [dart.dynamic])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:movie_app/models/movie_detail_model.dart"];
+  var adult$ = dart.privateName(movie_detail_model, "MovieDetailModel.adult");
+  var backdropPath$ = dart.privateName(movie_detail_model, "MovieDetailModel.backdropPath");
+  var belongsToCollection$ = dart.privateName(movie_detail_model, "MovieDetailModel.belongsToCollection");
+  var budget$ = dart.privateName(movie_detail_model, "MovieDetailModel.budget");
+  var genres$ = dart.privateName(movie_detail_model, "MovieDetailModel.genres");
+  var homepage$ = dart.privateName(movie_detail_model, "MovieDetailModel.homepage");
+  var id$ = dart.privateName(movie_detail_model, "MovieDetailModel.id");
+  var imdbId$ = dart.privateName(movie_detail_model, "MovieDetailModel.imdbId");
+  var originalLanguage$ = dart.privateName(movie_detail_model, "MovieDetailModel.originalLanguage");
+  var originalTitle$ = dart.privateName(movie_detail_model, "MovieDetailModel.originalTitle");
+  var overview$ = dart.privateName(movie_detail_model, "MovieDetailModel.overview");
+  var popularity$ = dart.privateName(movie_detail_model, "MovieDetailModel.popularity");
+  var posterPath$ = dart.privateName(movie_detail_model, "MovieDetailModel.posterPath");
+  var productionCompanies$ = dart.privateName(movie_detail_model, "MovieDetailModel.productionCompanies");
+  var productionCountries$ = dart.privateName(movie_detail_model, "MovieDetailModel.productionCountries");
+  var releaseDate$ = dart.privateName(movie_detail_model, "MovieDetailModel.releaseDate");
+  var revenue$ = dart.privateName(movie_detail_model, "MovieDetailModel.revenue");
+  var runtime$ = dart.privateName(movie_detail_model, "MovieDetailModel.runtime");
+  var spokenLanguages$ = dart.privateName(movie_detail_model, "MovieDetailModel.spokenLanguages");
+  var status$ = dart.privateName(movie_detail_model, "MovieDetailModel.status");
+  var tagline$ = dart.privateName(movie_detail_model, "MovieDetailModel.tagline");
+  var title$ = dart.privateName(movie_detail_model, "MovieDetailModel.title");
+  var video$ = dart.privateName(movie_detail_model, "MovieDetailModel.video");
+  var voteAverage$ = dart.privateName(movie_detail_model, "MovieDetailModel.voteAverage");
+  var voteCount$ = dart.privateName(movie_detail_model, "MovieDetailModel.voteCount");
+  movie_detail_model.MovieDetailModel = class MovieDetailModel extends core.Object {
+    get adult() {
+      return this[adult$];
+    }
+    set adult(value) {
+      super.adult = value;
+    }
+    get backdropPath() {
+      return this[backdropPath$];
+    }
+    set backdropPath(value) {
+      super.backdropPath = value;
+    }
+    get belongsToCollection() {
+      return this[belongsToCollection$];
+    }
+    set belongsToCollection(value) {
+      super.belongsToCollection = value;
+    }
+    get budget() {
+      return this[budget$];
+    }
+    set budget(value) {
+      super.budget = value;
+    }
+    get genres() {
+      return this[genres$];
+    }
+    set genres(value) {
+      super.genres = value;
+    }
+    get homepage() {
+      return this[homepage$];
+    }
+    set homepage(value) {
+      super.homepage = value;
+    }
+    get id() {
+      return this[id$];
+    }
+    set id(value) {
+      super.id = value;
+    }
+    get imdbId() {
+      return this[imdbId$];
+    }
+    set imdbId(value) {
+      super.imdbId = value;
+    }
+    get originalLanguage() {
+      return this[originalLanguage$];
+    }
+    set originalLanguage(value) {
+      super.originalLanguage = value;
+    }
+    get originalTitle() {
+      return this[originalTitle$];
+    }
+    set originalTitle(value) {
+      super.originalTitle = value;
+    }
+    get overview() {
+      return this[overview$];
+    }
+    set overview(value) {
+      super.overview = value;
+    }
+    get popularity() {
+      return this[popularity$];
+    }
+    set popularity(value) {
+      super.popularity = value;
+    }
+    get posterPath() {
+      return this[posterPath$];
+    }
+    set posterPath(value) {
+      super.posterPath = value;
+    }
+    get productionCompanies() {
+      return this[productionCompanies$];
+    }
+    set productionCompanies(value) {
+      super.productionCompanies = value;
+    }
+    get productionCountries() {
+      return this[productionCountries$];
+    }
+    set productionCountries(value) {
+      super.productionCountries = value;
+    }
+    get releaseDate() {
+      return this[releaseDate$];
+    }
+    set releaseDate(value) {
+      super.releaseDate = value;
+    }
+    get revenue() {
+      return this[revenue$];
+    }
+    set revenue(value) {
+      super.revenue = value;
+    }
+    get runtime() {
+      return this[runtime$];
+    }
+    set runtime(value) {
+      super.runtime = value;
+    }
+    get spokenLanguages() {
+      return this[spokenLanguages$];
+    }
+    set spokenLanguages(value) {
+      super.spokenLanguages = value;
+    }
+    get status() {
+      return this[status$];
+    }
+    set status(value) {
+      super.status = value;
+    }
+    get tagline() {
+      return this[tagline$];
+    }
+    set tagline(value) {
+      super.tagline = value;
+    }
+    get title() {
+      return this[title$];
+    }
+    set title(value) {
+      super.title = value;
+    }
+    get video() {
+      return this[video$];
+    }
+    set video(value) {
+      super.video = value;
+    }
+    get voteAverage() {
+      return this[voteAverage$];
+    }
+    set voteAverage(value) {
+      super.voteAverage = value;
+    }
+    get voteCount() {
+      return this[voteCount$];
+    }
+    set voteCount(value) {
+      super.voteCount = value;
+    }
+    static fromJson(str) {
+      return movie_detail_model.MovieDetailModel.fromMap(T.MapLOfStringL$dynamic().as(convert.json.decode(str)));
+    }
+    static fromMap(json) {
+      return new movie_detail_model.MovieDetailModel.new({adult: T.boolL().as(json[$_get]("adult")), backdropPath: T.StringL().as(json[$_get]("backdrop_path")), belongsToCollection: json[$_get]("belongs_to_collection"), budget: T.intL().as(json[$_get]("budget")), genres: T.ListOfMovieGenreL().from(core.Iterable.as(dart.dsend(json[$_get]("genres"), 'map', [dart.fn(x => movie_genre_model.MovieGenre.fromMap(T.MapLOfStringL$dynamic().as(x)), T.dynamicToMovieGenreL())]))), homepage: T.StringL().as(json[$_get]("homepage")), id: T.intL().as(json[$_get]("id")), imdbId: T.StringL().as(json[$_get]("imdb_id")), originalLanguage: T.StringL().as(json[$_get]("original_language")), originalTitle: T.StringL().as(json[$_get]("original_title")), overview: T.StringL().as(json[$_get]("overview")), popularity: T.doubleL().as(dart.dsend(json[$_get]("popularity"), 'toDouble', [])), posterPath: T.StringL().as(json[$_get]("poster_path")), productionCompanies: T.ListOfProductionCompanyModelL().from(core.Iterable.as(dart.dsend(json[$_get]("production_companies"), 'map', [dart.fn(x => movie_company_model.ProductionCompanyModel.fromMap(T.MapLOfStringL$dynamic().as(x)), T.dynamicToProductionCompanyModelL())]))), productionCountries: T.ListOfProductionCountryModelL().from(core.Iterable.as(dart.dsend(json[$_get]("production_countries"), 'map', [dart.fn(x => movie_country_model.ProductionCountryModel.fromMap(T.MapLOfStringL$dynamic().as(x)), T.dynamicToProductionCountryModelL())]))), releaseDate: core.DateTime.parse(core.String.as(json[$_get]("release_date"))), revenue: T.intL().as(json[$_get]("revenue")), runtime: T.intL().as(json[$_get]("runtime")), spokenLanguages: T.ListOfSpokenLanguageModelL().from(core.Iterable.as(dart.dsend(json[$_get]("spoken_languages"), 'map', [dart.fn(x => spoken_language_model.SpokenLanguageModel.fromMap(T.MapLOfStringL$dynamic().as(x)), T.dynamicToSpokenLanguageModelL())]))), status: T.StringL().as(json[$_get]("status")), tagline: T.StringL().as(json[$_get]("tagline")), title: T.StringL().as(json[$_get]("title")), video: T.boolL().as(json[$_get]("video")), voteAverage: T.doubleL().as(dart.dsend(json[$_get]("vote_average"), 'toDouble', [])), voteCount: T.intL().as(json[$_get]("vote_count"))});
+    }
+  };
+  (movie_detail_model.MovieDetailModel.new = function(opts) {
+    let adult = opts && 'adult' in opts ? opts.adult : null;
+    let backdropPath = opts && 'backdropPath' in opts ? opts.backdropPath : null;
+    let belongsToCollection = opts && 'belongsToCollection' in opts ? opts.belongsToCollection : null;
+    let budget = opts && 'budget' in opts ? opts.budget : null;
+    let genres = opts && 'genres' in opts ? opts.genres : null;
+    let homepage = opts && 'homepage' in opts ? opts.homepage : null;
+    let id = opts && 'id' in opts ? opts.id : null;
+    let imdbId = opts && 'imdbId' in opts ? opts.imdbId : null;
+    let originalLanguage = opts && 'originalLanguage' in opts ? opts.originalLanguage : null;
+    let originalTitle = opts && 'originalTitle' in opts ? opts.originalTitle : null;
+    let overview = opts && 'overview' in opts ? opts.overview : null;
+    let popularity = opts && 'popularity' in opts ? opts.popularity : null;
+    let posterPath = opts && 'posterPath' in opts ? opts.posterPath : null;
+    let productionCompanies = opts && 'productionCompanies' in opts ? opts.productionCompanies : null;
+    let productionCountries = opts && 'productionCountries' in opts ? opts.productionCountries : null;
+    let releaseDate = opts && 'releaseDate' in opts ? opts.releaseDate : null;
+    let revenue = opts && 'revenue' in opts ? opts.revenue : null;
+    let runtime = opts && 'runtime' in opts ? opts.runtime : null;
+    let spokenLanguages = opts && 'spokenLanguages' in opts ? opts.spokenLanguages : null;
+    let status = opts && 'status' in opts ? opts.status : null;
+    let tagline = opts && 'tagline' in opts ? opts.tagline : null;
+    let title = opts && 'title' in opts ? opts.title : null;
+    let video = opts && 'video' in opts ? opts.video : null;
+    let voteAverage = opts && 'voteAverage' in opts ? opts.voteAverage : null;
+    let voteCount = opts && 'voteCount' in opts ? opts.voteCount : null;
+    this[adult$] = adult;
+    this[backdropPath$] = backdropPath;
+    this[belongsToCollection$] = belongsToCollection;
+    this[budget$] = budget;
+    this[genres$] = genres;
+    this[homepage$] = homepage;
+    this[id$] = id;
+    this[imdbId$] = imdbId;
+    this[originalLanguage$] = originalLanguage;
+    this[originalTitle$] = originalTitle;
+    this[overview$] = overview;
+    this[popularity$] = popularity;
+    this[posterPath$] = posterPath;
+    this[productionCompanies$] = productionCompanies;
+    this[productionCountries$] = productionCountries;
+    this[releaseDate$] = releaseDate;
+    this[revenue$] = revenue;
+    this[runtime$] = runtime;
+    this[spokenLanguages$] = spokenLanguages;
+    this[status$] = status;
+    this[tagline$] = tagline;
+    this[title$] = title;
+    this[video$] = video;
+    this[voteAverage$] = voteAverage;
+    this[voteCount$] = voteCount;
+    ;
+  }).prototype = movie_detail_model.MovieDetailModel.prototype;
+  dart.addTypeTests(movie_detail_model.MovieDetailModel);
+  dart.addTypeCaches(movie_detail_model.MovieDetailModel);
+  dart.setLibraryUri(movie_detail_model.MovieDetailModel, I[0]);
+  dart.setFieldSignature(movie_detail_model.MovieDetailModel, () => ({
+    __proto__: dart.getFields(movie_detail_model.MovieDetailModel.__proto__),
+    adult: dart.finalFieldType(dart.legacy(core.bool)),
+    backdropPath: dart.finalFieldType(dart.legacy(core.String)),
+    belongsToCollection: dart.finalFieldType(dart.dynamic),
+    budget: dart.finalFieldType(dart.legacy(core.int)),
+    genres: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(movie_genre_model.MovieGenre)))),
+    homepage: dart.finalFieldType(dart.legacy(core.String)),
+    id: dart.finalFieldType(dart.legacy(core.int)),
+    imdbId: dart.finalFieldType(dart.legacy(core.String)),
+    originalLanguage: dart.finalFieldType(dart.legacy(core.String)),
+    originalTitle: dart.finalFieldType(dart.legacy(core.String)),
+    overview: dart.finalFieldType(dart.legacy(core.String)),
+    popularity: dart.finalFieldType(dart.legacy(core.double)),
+    posterPath: dart.finalFieldType(dart.legacy(core.String)),
+    productionCompanies: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(movie_company_model.ProductionCompanyModel)))),
+    productionCountries: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(movie_country_model.ProductionCountryModel)))),
+    releaseDate: dart.finalFieldType(dart.legacy(core.DateTime)),
+    revenue: dart.finalFieldType(dart.legacy(core.int)),
+    runtime: dart.finalFieldType(dart.legacy(core.int)),
+    spokenLanguages: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(spoken_language_model.SpokenLanguageModel)))),
+    status: dart.finalFieldType(dart.legacy(core.String)),
+    tagline: dart.finalFieldType(dart.legacy(core.String)),
+    title: dart.finalFieldType(dart.legacy(core.String)),
+    video: dart.finalFieldType(dart.legacy(core.bool)),
+    voteAverage: dart.finalFieldType(dart.legacy(core.double)),
+    voteCount: dart.finalFieldType(dart.legacy(core.int))
+  }));
+  dart.trackLibraries("packages/movie_app/models/movie_detail_model.dart", {
+    "package:movie_app/models/movie_detail_model.dart": movie_detail_model
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["movie_detail_model.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAQa;;;;;;IACE;;;;;;IACC;;;;;;IACJ;;;;;;IACa;;;;;;IACV;;;;;;IACH;;;;;;IACG;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACA;;;;;;IACsB;;;;;;IACA;;;;;;IACpB;;;;;;IACL;;;;;;IACA;;;;;;IACsB;;;;;;IACnB;;;;;;IACA;;;;;;IACA;;;;;;IACF;;;;;;IACE;;;;;;IACH;;;;;;oBA8B+B;AACrC,YAAiB,0EAAQ,AAAK,oBAAO,GAAG;IAAE;mBAEQ;AAClD,8EACS,AAAI,IAAA,QAAC,wCACE,AAAI,IAAA,QAAC,wCACE,AAAI,IAAA,QAAC,8CAClB,AAAI,IAAA,QAAC,oBACL,4CACW,WAAf,AAAI,IAAA,QAAC,mBAAc,QAAC,KAAiB,kEAAQ,CAAC,4DACxC,AAAI,IAAA,QAAC,8BACX,AAAI,IAAA,QAAC,+BACD,AAAI,IAAA,QAAC,8CACK,AAAI,IAAA,QAAC,qDACR,AAAI,IAAA,QAAC,6CACV,AAAI,IAAA,QAAC,yCACgB,WAAnB,AAAI,IAAA,QAAC,4DACL,AAAI,IAAA,QAAC,sCACI,wDAEZ,WADL,AAAI,IAAA,QAAC,iCACI,QAAC,KAA6B,gFAAQ,CAAC,oEAC/B,wDAEZ,WADL,AAAI,IAAA,QAAC,iCACI,QAAC,KAA6B,gFAAQ,CAAC,4DAC9B,mCAAM,AAAI,IAAA,QAAC,wCACxB,AAAI,IAAA,QAAC,kCACL,AAAI,IAAA,QAAC,8BACG,qDACZ,WAD2C,AAAI,IAAA,QAAC,6BAC5C,QAAC,KAA0B,+EAAQ,CAAC,mEACrC,AAAI,IAAA,QAAC,oCACJ,AAAI,IAAA,QAAC,mCACP,AAAI,IAAA,QAAC,+BACL,AAAI,IAAA,QAAC,uCACsB,WAArB,AAAI,IAAA,QAAC,0DACP,AAAI,IAAA,QAAC;IACjB;;;QA/DE;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;IAxBA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EACL","file":"../../../../packages/movie_app/models/movie_detail_model.dart.lib.js"}');
+  // Exports:
+  return {
+    models__movie_detail_model: movie_detail_model
+  };
+}));
+
+//# sourceMappingURL=movie_detail_model.dart.lib.js.map

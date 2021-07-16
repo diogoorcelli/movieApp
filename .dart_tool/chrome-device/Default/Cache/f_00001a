@@ -1,0 +1,530 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/movie_app/controllers/movie_detail_controller.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/widgets/preferred_size.dart', 'packages/movie_app/widgets/movie_load_progress.dart', 'packages/movie_app/widgets/movie_message.dart', 'packages/flutter/src/widgets/scroll_view.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/movie_app/widgets/rate.dart', 'packages/movie_app/widgets/chip_date.dart'], (function load__packages__movie_app__views__movie_detail_page_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__movie_app__controllers__movie_detail_controller$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__widgets__preferred_size$46dart, packages__movie_app__widgets__movie_load_progress$46dart, packages__movie_app__widgets__movie_message$46dart, packages__flutter__src__widgets__scroll_view$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__rendering__flex$46dart, packages__movie_app__widgets__rate$46dart, packages__movie_app__widgets__chip_date$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const image = packages__flutter__src__widgets__widget_span$46dart.src__widgets__image;
+  const movie_detail_controller = packages__movie_app__controllers__movie_detail_controller$46dart.controllers__movie_detail_controller;
+  const scaffold = packages__flutter__src__material__icon_button$46dart.src__material__scaffold;
+  const app_bar = packages__flutter__src__material__icon_button$46dart.src__material__app_bar;
+  const theme = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const preferred_size = packages__flutter__src__widgets__preferred_size$46dart.src__widgets__preferred_size;
+  const movie_load_progress = packages__movie_app__widgets__movie_load_progress$46dart.widgets__movie_load_progress;
+  const movie_message = packages__movie_app__widgets__movie_message$46dart.widgets__movie_message;
+  const scroll_view = packages__flutter__src__widgets__scroll_view$46dart.src__widgets__scroll_view;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const rate = packages__movie_app__widgets__rate$46dart.widgets__rate;
+  const chip_date = packages__movie_app__widgets__chip_date$46dart.widgets__chip_date;
+  var movie_detail_page = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    PreferredSizeWidgetN: () => (T.PreferredSizeWidgetN = dart.constFn(dart.nullable(preferred_size.PreferredSizeWidget)))(),
+    WidgetN: () => (T.WidgetN = dart.constFn(dart.nullable(framework.Widget)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "appBar",
+        [_Location_column]: 7,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "body",
+        [_Location_column]: 7,
+        [_Location_line]: 43,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 50,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 7,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.constList([C[9] || CT.C9], T._LocationL());
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[8] || CT.C8,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 48,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "message",
+        [_Location_column]: 30,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.constList([C[14] || CT.C14], T._LocationL());
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 59,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.constList([C[17] || CT.C17], T._LocationL());
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 62,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 10,
+        [EdgeInsets_right]: 10,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 10
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 33,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 9,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 77,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.constList([C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23], T._LocationL());
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[20] || CT.C20,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 73,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 74,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27], T._LocationL());
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[25] || CT.C25,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 72,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 10,
+        [EdgeInsets_right]: 10,
+        [EdgeInsets_top]: 10,
+        [EdgeInsets_left]: 10
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "value",
+        [_Location_column]: 40,
+        [_Location_line]: 88,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.constList([C[31] || CT.C31], T._LocationL());
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[30] || CT.C30,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 88,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "date",
+        [_Location_column]: 20,
+        [_Location_line]: 89,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.constList([C[34] || CT.C34], T._LocationL());
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[33] || CT.C33,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 89,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 9,
+        [_Location_line]: 86,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 9,
+        [_Location_line]: 87,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.constList([C[37] || CT.C37, C[38] || CT.C38], T._LocationL());
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[36] || CT.C36,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 85,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 84,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.constList([C[41] || CT.C41, C[42] || CT.C42], T._LocationL());
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[40] || CT.C40,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 83,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "src",
+        [_Location_column]: 79,
+        [_Location_line]: 97,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.constList([C[45] || CT.C45], T._LocationL());
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[44] || CT.C44,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 96,
+        [_Location_file]: "file:///D:/Flutter_Projects/movie_app/lib/views/movie_detail_page.dart"
+      });
+    }
+  }, false);
+  var C = Array(46).fill(void 0);
+  var I = ["package:movie_app/views/movie_detail_page.dart"];
+  var movieId$ = dart.privateName(movie_detail_page, "MovieDetailPage.movieId");
+  movie_detail_page.MovieDetailPage = class MovieDetailPage extends framework.StatefulWidget {
+    get movieId() {
+      return this[movieId$];
+    }
+    set movieId(value) {
+      super.movieId = value;
+    }
+    createState() {
+      return new movie_detail_page._MovieDetailPageState.new();
+    }
+  };
+  (movie_detail_page.MovieDetailPage.new = function(movieId, opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[movieId$] = movieId;
+    movie_detail_page.MovieDetailPage.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = movie_detail_page.MovieDetailPage.prototype;
+  dart.addTypeTests(movie_detail_page.MovieDetailPage);
+  dart.addTypeCaches(movie_detail_page.MovieDetailPage);
+  dart.setMethodSignature(movie_detail_page.MovieDetailPage, () => ({
+    __proto__: dart.getMethods(movie_detail_page.MovieDetailPage.__proto__),
+    createState: dart.fnType(dart.legacy(movie_detail_page._MovieDetailPageState), [])
+  }));
+  dart.setLibraryUri(movie_detail_page.MovieDetailPage, I[0]);
+  dart.setFieldSignature(movie_detail_page.MovieDetailPage, () => ({
+    __proto__: dart.getFields(movie_detail_page.MovieDetailPage.__proto__),
+    movieId: dart.finalFieldType(dart.legacy(core.int))
+  }));
+  var _controller = dart.privateName(movie_detail_page, "_controller");
+  var _initialize = dart.privateName(movie_detail_page, "_initialize");
+  var _buildAppBar = dart.privateName(movie_detail_page, "_buildAppBar");
+  var _buildMovieDetail = dart.privateName(movie_detail_page, "_buildMovieDetail");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _buildCover = dart.privateName(movie_detail_page, "_buildCover");
+  var _buildStatus = dart.privateName(movie_detail_page, "_buildStatus");
+  var _buildOverview = dart.privateName(movie_detail_page, "_buildOverview");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  movie_detail_page._MovieDetailPageState = class _MovieDetailPageState extends framework.State$(dart.legacy(movie_detail_page.MovieDetailPage)) {
+    initState() {
+      super.initState();
+      this[_initialize]();
+    }
+    [_initialize]() {
+      return async.async(dart.dynamic, (function* _initialize() {
+        this.setState(dart.fn(() => {
+          this[_controller].loading = true;
+        }, T.VoidToNull()));
+        yield this[_controller].fetchMovieById(this.widget.movieId);
+        this.setState(dart.fn(() => {
+          this[_controller].loading = false;
+        }, T.VoidToNull()));
+      }).bind(this));
+    }
+    build(context) {
+      return new scaffold.Scaffold.new({appBar: T.PreferredSizeWidgetN().as(this[_buildAppBar]()), body: T.WidgetN().as(this[_buildMovieDetail]()), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+    }
+    [_buildAppBar]() {
+      let t0, t0$;
+      return new app_bar.AppBar.new({title: new text.Text.new((t0$ = (t0 = this[_controller].movieDetail, t0 == null ? null : t0.title), t0$ == null ? "" : t0$), {$creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), $creationLocationd_0dea112b090073317d4: C[7] || CT.C7});
+    }
+    [_buildMovieDetail]() {
+      if (dart.test(this[_controller].loading)) {
+        return new movie_load_progress.CenteredProgress.new({$creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+      }
+      if (this[_controller].movieError != null) {
+        return new movie_message.CenteredMessage.new({message: this[_controller].movieError.message, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12});
+      }
+      return new scroll_view.ListView.new({children: T.JSArrayOfWidgetL().of([T.WidgetL().as(this[_buildCover]()), T.WidgetL().as(this[_buildStatus]()), T.WidgetL().as(this[_buildOverview]())]), $creationLocationd_0dea112b090073317d4: C[15] || CT.C15});
+    }
+    [_buildOverview]() {
+      return new container.Container.new({padding: C[18] || CT.C18, child: new text.Text.new(this[_controller].movieDetail.overview, {textAlign: ui.TextAlign.justify, style: theme.Theme.of(this.context).textTheme.bodyText2, $creationLocationd_0dea112b090073317d4: C[19] || CT.C19}), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24});
+    }
+    [_buildStatus]() {
+      return new container.Container.new({padding: C[28] || CT.C28, child: new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.spaceBetween, children: T.JSArrayOfWidgetL().of([new rate.Rate.new(this[_controller].movieDetail.voteAverage, {$creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), new chip_date.ChipDate.new({date: this[_controller].movieDetail.releaseDate, $creationLocationd_0dea112b090073317d4: C[32] || CT.C32})]), $creationLocationd_0dea112b090073317d4: C[35] || CT.C35}), $creationLocationd_0dea112b090073317d4: C[39] || CT.C39});
+    }
+    [_buildCover]() {
+      return new image.Image.network("https://image.tmdb.org/t/p/w500" + dart.str(this[_controller].movieDetail.backdropPath), {$creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
+    }
+  };
+  (movie_detail_page._MovieDetailPageState.new = function() {
+    this[_controller] = new movie_detail_controller.MovieDetailController.new();
+    movie_detail_page._MovieDetailPageState.__proto__.new.call(this);
+    ;
+  }).prototype = movie_detail_page._MovieDetailPageState.prototype;
+  dart.addTypeTests(movie_detail_page._MovieDetailPageState);
+  dart.addTypeCaches(movie_detail_page._MovieDetailPageState);
+  dart.setMethodSignature(movie_detail_page._MovieDetailPageState, () => ({
+    __proto__: dart.getMethods(movie_detail_page._MovieDetailPageState.__proto__),
+    [_initialize]: dart.fnType(dart.dynamic, []),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]),
+    [_buildAppBar]: dart.fnType(dart.dynamic, []),
+    [_buildMovieDetail]: dart.fnType(dart.dynamic, []),
+    [_buildOverview]: dart.fnType(dart.dynamic, []),
+    [_buildStatus]: dart.fnType(dart.dynamic, []),
+    [_buildCover]: dart.fnType(dart.dynamic, [])
+  }));
+  dart.setLibraryUri(movie_detail_page._MovieDetailPageState, I[0]);
+  dart.setFieldSignature(movie_detail_page._MovieDetailPageState, () => ({
+    __proto__: dart.getFields(movie_detail_page._MovieDetailPageState.__proto__),
+    [_controller]: dart.finalFieldType(dart.legacy(movie_detail_controller.MovieDetailController))
+  }));
+  dart.trackLibraries("packages/movie_app/views/movie_detail_page.dart", {
+    "package:movie_app/views/movie_detail_page.dart": movie_detail_page
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["movie_detail_page.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IASY;;;;;;;AAK6B;IAAuB;;oDAHzC;;;AAArB;;EAA6B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAWV,MAAX;AACO,MAAb;IACF;;AAEW;AAGP,QAFF,cAAS;AACmB,UAA1B,AAAY,4BAAU;;AAGwB,QAAhD,MAAM,AAAY,iCAAe,AAAO;AAItC,QAFF,cAAS;AACoB,UAA3B,AAAY,4BAAU;;MAE1B;;UAG0B;AACxB,YAAO,gEACG,4CACF;IAEV;;;AAGE,YAAO,gCACE,mBAAoC,YAA/B,AAAY,4CAAA,OAAa,WAAb,cAAsB;IAElD;;AAGE,oBAAI,AAAY;AACd,cAAO;;AAGT,UAAI,AAAY;AACd,cAAO,iDAAyB,AAAY,AAAW;;AAGzD,YAAO,yCACK,wCACR,qCACA,sCACA;IAGN;;AAGE,YAAO,+DAEE,kBACL,AAAY,AAAY,oDACH,6BACR,AAAY,AAAU,eAAnB;IAGtB;;AAGE,YAAO,+DAEE,sCACgC,+CAC3B,yBACR,kBAAK,AAAY,AAAY,uGAC7B,kCAAe,AAAY,AAAY;IAI/C;;AAGE,YAAa,yBACX,AAAwE,6CAAtC,AAAY,AAAY;IAE9D;;;IAhFM,oBAAc;;;EAiFtB","file":"../../../../packages/movie_app/views/movie_detail_page.dart.lib.js"}');
+  // Exports:
+  return {
+    views__movie_detail_page: movie_detail_page
+  };
+}));
+
+//# sourceMappingURL=movie_detail_page.dart.lib.js.map
