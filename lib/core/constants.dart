@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 
 const appName = 'Movies App';
-const detailName = 'Movie Detail';
-const trendingMovies = 'Trending Movies of the week';
-const topRatedMovies = 'Top rated Movies';
-const popularMovies = 'The most popular Movies';
-const genreMoviesSearch = 'What do you search?';
-const genreSubDetail = 'Search by genre and discover something new';
+const detailName = 'Detalhes do filme';
+const trendingMovies = 'Filmes populares da semana';
+const topRatedMovies = 'Filmes com melhor classificação';
+const popularMovies = 'Filmes mais populares';
+const genreMoviesSearch = 'O que você procura?';
+const genreSubDetail = 'Busque filmes por gênero';
 
 const cDateFormat = 'dd/MM/yyyy';
 

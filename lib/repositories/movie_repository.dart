@@ -14,7 +14,7 @@ class MovieRepository {
 
   Future<Either<MovieError, GenreRespondeModel>> fetchListGenres() async {
     try {
-      final response = await _dio.get('/genre/movie/list');
+      final response = await _dio.get('/genre/movie/list?&language=pt-BR');
       final model = GenreRespondeModel.fromMap(response.data);
       return Right(model);
     } on DioError catch (error) {
@@ -67,7 +67,7 @@ class MovieRepository {
 
   Future<Either<MovieError, MovieDetailModel>> fetchMovieById(int id) async {
     try {
-      final response = await _dio.get('/movie/$id');
+      final response = await _dio.get('/movie/$id?&language=pt-BR');
       final model = MovieDetailModel.fromMap(response.data);
       return Right(model);
     } on DioError catch (error) {

@@ -14,7 +14,7 @@ class MovieModel {
   final String title;
   final double voteAverage;
   final String overview;
-  final DateTime releaseDate;
+  //final DateTime releaseDate;
 
   const MovieModel({
     this.popularity,
@@ -30,7 +30,7 @@ class MovieModel {
     this.title,
     this.voteAverage,
     this.overview,
-    this.releaseDate,
+    //this.releaseDate,
   });
 
   factory MovieModel.fromJson(String str) =>
@@ -50,6 +50,6 @@ class MovieModel {
         title: json["title"],
         voteAverage: json["vote_average"].toDouble(),
         overview: json["overview"],
-        releaseDate: DateTime.parse(json["release_date"]),
+        //releaseDate: DateTime.parse(json["release_date"]),
       );
 }

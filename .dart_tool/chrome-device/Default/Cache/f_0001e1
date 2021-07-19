@@ -1,0 +1,204 @@
+define(['dart_sdk', 'packages/dio/src/entry/dio_for_browser.dart', 'packages/movie_app/core/constants.dart', 'packages/movie_app/models/genres_response_model.dart', 'packages/dartz/dartz.dart', 'packages/movie_app/errors/movie_error.dart', 'packages/dio/src/cancel_token.dart', 'packages/movie_app/models/movie_trending_response_model.dart', 'packages/movie_app/models/movie_response_model.dart', 'packages/movie_app/models/movie_detail_model.dart', 'packages/movie_app/models/movie_by_genre_response_model.dart'], (function load__packages__movie_app__repositories__movie_repository_dart(dart_sdk, packages__dio__src__entry__dio_for_browser$46dart, packages__movie_app__core__constants$46dart, packages__movie_app__models__genres_response_model$46dart, packages__dartz__dartz$46dart, packages__movie_app__errors__movie_error$46dart, packages__dio__src__cancel_token$46dart, packages__movie_app__models__movie_trending_response_model$46dart, packages__movie_app__models__movie_response_model$46dart, packages__movie_app__models__movie_detail_model$46dart, packages__movie_app__models__movie_by_genre_response_model$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const dio = packages__dio__src__entry__dio_for_browser$46dart.src__dio;
+  const constants = packages__movie_app__core__constants$46dart.core__constants;
+  const genres_response_model = packages__movie_app__models__genres_response_model$46dart.models__genres_response_model;
+  const dartz = packages__dartz__dartz$46dart.dartz;
+  const movie_error = packages__movie_app__errors__movie_error$46dart.errors__movie_error;
+  const dio_error = packages__dio__src__cancel_token$46dart.src__dio_error;
+  const movie_trending_response_model = packages__movie_app__models__movie_trending_response_model$46dart.models__movie_trending_response_model;
+  const movie_response_model = packages__movie_app__models__movie_response_model$46dart.models__movie_response_model;
+  const movie_detail_model = packages__movie_app__models__movie_detail_model$46dart.models__movie_detail_model;
+  const movie_by_genre_response_model = packages__movie_app__models__movie_by_genre_response_model$46dart.models__movie_by_genre_response_model;
+  var movie_repository = Object.create(dart.library);
+  var $toString = dartx.toString;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    MapOfStringL$dynamic: () => (T.MapOfStringL$dynamic = dart.constFn(core.Map$(T.StringL(), dart.dynamic)))(),
+    MapLOfStringL$dynamic: () => (T.MapLOfStringL$dynamic = dart.constFn(dart.legacy(T.MapOfStringL$dynamic())))(),
+    MovieErrorL: () => (T.MovieErrorL = dart.constFn(dart.legacy(movie_error.MovieError)))(),
+    GenreRespondeModelL: () => (T.GenreRespondeModelL = dart.constFn(dart.legacy(genres_response_model.GenreRespondeModel)))(),
+    RightOfMovieErrorL$GenreRespondeModelL: () => (T.RightOfMovieErrorL$GenreRespondeModelL = dart.constFn(dartz.Right$(T.MovieErrorL(), T.GenreRespondeModelL())))(),
+    LeftOfMovieErrorL$GenreRespondeModelL: () => (T.LeftOfMovieErrorL$GenreRespondeModelL = dart.constFn(dartz.Left$(T.MovieErrorL(), T.GenreRespondeModelL())))(),
+    ExceptionL: () => (T.ExceptionL = dart.constFn(dart.legacy(core.Exception)))(),
+    DioErrorL: () => (T.DioErrorL = dart.constFn(dart.legacy(dio_error.DioError)))(),
+    EitherOfMovieErrorL$GenreRespondeModelL: () => (T.EitherOfMovieErrorL$GenreRespondeModelL = dart.constFn(dartz.Either$(T.MovieErrorL(), T.GenreRespondeModelL())))(),
+    EitherLOfMovieErrorL$GenreRespondeModelL: () => (T.EitherLOfMovieErrorL$GenreRespondeModelL = dart.constFn(dart.legacy(T.EitherOfMovieErrorL$GenreRespondeModelL())))(),
+    MovieTrendingResponseModelL: () => (T.MovieTrendingResponseModelL = dart.constFn(dart.legacy(movie_trending_response_model.MovieTrendingResponseModel)))(),
+    RightOfMovieErrorL$MovieTrendingResponseModelL: () => (T.RightOfMovieErrorL$MovieTrendingResponseModelL = dart.constFn(dartz.Right$(T.MovieErrorL(), T.MovieTrendingResponseModelL())))(),
+    LeftOfMovieErrorL$MovieTrendingResponseModelL: () => (T.LeftOfMovieErrorL$MovieTrendingResponseModelL = dart.constFn(dartz.Left$(T.MovieErrorL(), T.MovieTrendingResponseModelL())))(),
+    EitherOfMovieErrorL$MovieTrendingResponseModelL: () => (T.EitherOfMovieErrorL$MovieTrendingResponseModelL = dart.constFn(dartz.Either$(T.MovieErrorL(), T.MovieTrendingResponseModelL())))(),
+    EitherLOfMovieErrorL$MovieTrendingResponseModelL: () => (T.EitherLOfMovieErrorL$MovieTrendingResponseModelL = dart.constFn(dart.legacy(T.EitherOfMovieErrorL$MovieTrendingResponseModelL())))(),
+    MovieResponseModelL: () => (T.MovieResponseModelL = dart.constFn(dart.legacy(movie_response_model.MovieResponseModel)))(),
+    RightOfMovieErrorL$MovieResponseModelL: () => (T.RightOfMovieErrorL$MovieResponseModelL = dart.constFn(dartz.Right$(T.MovieErrorL(), T.MovieResponseModelL())))(),
+    LeftOfMovieErrorL$MovieResponseModelL: () => (T.LeftOfMovieErrorL$MovieResponseModelL = dart.constFn(dartz.Left$(T.MovieErrorL(), T.MovieResponseModelL())))(),
+    EitherOfMovieErrorL$MovieResponseModelL: () => (T.EitherOfMovieErrorL$MovieResponseModelL = dart.constFn(dartz.Either$(T.MovieErrorL(), T.MovieResponseModelL())))(),
+    EitherLOfMovieErrorL$MovieResponseModelL: () => (T.EitherLOfMovieErrorL$MovieResponseModelL = dart.constFn(dart.legacy(T.EitherOfMovieErrorL$MovieResponseModelL())))(),
+    MovieDetailModelL: () => (T.MovieDetailModelL = dart.constFn(dart.legacy(movie_detail_model.MovieDetailModel)))(),
+    RightOfMovieErrorL$MovieDetailModelL: () => (T.RightOfMovieErrorL$MovieDetailModelL = dart.constFn(dartz.Right$(T.MovieErrorL(), T.MovieDetailModelL())))(),
+    LeftOfMovieErrorL$MovieDetailModelL: () => (T.LeftOfMovieErrorL$MovieDetailModelL = dart.constFn(dartz.Left$(T.MovieErrorL(), T.MovieDetailModelL())))(),
+    EitherOfMovieErrorL$MovieDetailModelL: () => (T.EitherOfMovieErrorL$MovieDetailModelL = dart.constFn(dartz.Either$(T.MovieErrorL(), T.MovieDetailModelL())))(),
+    EitherLOfMovieErrorL$MovieDetailModelL: () => (T.EitherLOfMovieErrorL$MovieDetailModelL = dart.constFn(dart.legacy(T.EitherOfMovieErrorL$MovieDetailModelL())))(),
+    MovieByGenreResponseModelL: () => (T.MovieByGenreResponseModelL = dart.constFn(dart.legacy(movie_by_genre_response_model.MovieByGenreResponseModel)))(),
+    RightOfMovieErrorL$MovieByGenreResponseModelL: () => (T.RightOfMovieErrorL$MovieByGenreResponseModelL = dart.constFn(dartz.Right$(T.MovieErrorL(), T.MovieByGenreResponseModelL())))(),
+    LeftOfMovieErrorL$MovieByGenreResponseModelL: () => (T.LeftOfMovieErrorL$MovieByGenreResponseModelL = dart.constFn(dartz.Left$(T.MovieErrorL(), T.MovieByGenreResponseModelL())))(),
+    EitherOfMovieErrorL$MovieByGenreResponseModelL: () => (T.EitherOfMovieErrorL$MovieByGenreResponseModelL = dart.constFn(dartz.Either$(T.MovieErrorL(), T.MovieByGenreResponseModelL())))(),
+    EitherLOfMovieErrorL$MovieByGenreResponseModelL: () => (T.EitherLOfMovieErrorL$MovieByGenreResponseModelL = dart.constFn(dart.legacy(T.EitherOfMovieErrorL$MovieByGenreResponseModelL())))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:movie_app/repositories/movie_repository.dart"];
+  var _dio = dart.privateName(movie_repository, "_dio");
+  movie_repository.MovieRepository = class MovieRepository extends core.Object {
+    fetchListGenres() {
+      return async.async(T.EitherLOfMovieErrorL$GenreRespondeModelL(), (function* fetchListGenres() {
+        try {
+          let response = (yield this[_dio].get(dart.dynamic, "/genre/movie/list?&language=pt-BR"));
+          let model = genres_response_model.GenreRespondeModel.fromMap(T.MapLOfStringL$dynamic().as(response.data));
+          return new (T.RightOfMovieErrorL$GenreRespondeModelL()).new(model);
+        } catch (e) {
+          let ex = dart.getThrown(e);
+          if (T.DioErrorL().is(ex)) {
+            let error = ex;
+            if (error.response != null) {
+              return new (T.LeftOfMovieErrorL$GenreRespondeModelL()).new(new movie_error.MovieRepositoryError.new(T.StringL().as(dart.dsend(error.response.data, '_get', ["status_message"]))));
+            } else {
+              return new (T.LeftOfMovieErrorL$GenreRespondeModelL()).new(new movie_error.MovieRepositoryError.new(constants.serverError));
+            }
+          } else if (T.ExceptionL().is(ex)) {
+            let error = ex;
+            return new (T.LeftOfMovieErrorL$GenreRespondeModelL()).new(new movie_error.MovieRepositoryError.new(dart.toString(error)));
+          } else
+            throw e;
+        }
+      }).bind(this));
+    }
+    fetchMoviesTrending(page) {
+      return async.async(T.EitherLOfMovieErrorL$MovieTrendingResponseModelL(), (function* fetchMoviesTrending() {
+        try {
+          let response = (yield this[_dio].get(dart.dynamic, "/trending/movie/week?page=" + dart.str(page)));
+          let model = movie_trending_response_model.MovieTrendingResponseModel.fromMap(T.MapLOfStringL$dynamic().as(response.data));
+          return new (T.RightOfMovieErrorL$MovieTrendingResponseModelL()).new(model);
+        } catch (e) {
+          let ex = dart.getThrown(e);
+          if (T.DioErrorL().is(ex)) {
+            let error = ex;
+            if (error.response != null) {
+              return new (T.LeftOfMovieErrorL$MovieTrendingResponseModelL()).new(new movie_error.MovieRepositoryError.new(T.StringL().as(dart.dsend(error.response.data, '_get', ["status_message"]))));
+            } else {
+              return new (T.LeftOfMovieErrorL$MovieTrendingResponseModelL()).new(new movie_error.MovieRepositoryError.new(constants.serverError));
+            }
+          } else if (T.ExceptionL().is(ex)) {
+            let error = ex;
+            return new (T.LeftOfMovieErrorL$MovieTrendingResponseModelL()).new(new movie_error.MovieRepositoryError.new(dart.toString(error)));
+          } else
+            throw e;
+        }
+      }).bind(this));
+    }
+    fetchAllMovies(page) {
+      return async.async(T.EitherLOfMovieErrorL$MovieResponseModelL(), (function* fetchAllMovies() {
+        try {
+          let response = (yield this[_dio].get(dart.dynamic, "/movie/popular?page=" + dart.str(page)));
+          let model = movie_response_model.MovieResponseModel.fromMap(T.MapLOfStringL$dynamic().as(response.data));
+          return new (T.RightOfMovieErrorL$MovieResponseModelL()).new(model);
+        } catch (e) {
+          let ex = dart.getThrown(e);
+          if (T.DioErrorL().is(ex)) {
+            let error = ex;
+            if (error.response != null) {
+              return new (T.LeftOfMovieErrorL$MovieResponseModelL()).new(new movie_error.MovieRepositoryError.new(T.StringL().as(dart.dsend(error.response.data, '_get', ["status_message"]))));
+            } else {
+              return new (T.LeftOfMovieErrorL$MovieResponseModelL()).new(new movie_error.MovieRepositoryError.new(constants.serverError));
+            }
+          } else if (T.ExceptionL().is(ex)) {
+            let error = ex;
+            return new (T.LeftOfMovieErrorL$MovieResponseModelL()).new(new movie_error.MovieRepositoryError.new(dart.toString(error)));
+          } else
+            throw e;
+        }
+      }).bind(this));
+    }
+    fetchMovieById(id) {
+      return async.async(T.EitherLOfMovieErrorL$MovieDetailModelL(), (function* fetchMovieById() {
+        try {
+          let response = (yield this[_dio].get(dart.dynamic, "/movie/" + dart.str(id) + "?&language=pt-BR"));
+          let model = movie_detail_model.MovieDetailModel.fromMap(T.MapLOfStringL$dynamic().as(response.data));
+          return new (T.RightOfMovieErrorL$MovieDetailModelL()).new(model);
+        } catch (e) {
+          let ex = dart.getThrown(e);
+          if (T.DioErrorL().is(ex)) {
+            let error = ex;
+            if (error.response != null) {
+              return new (T.LeftOfMovieErrorL$MovieDetailModelL()).new(new movie_error.MovieRepositoryError.new(T.StringL().as(dart.dsend(error.response.data, '_get', ["status_message"]))));
+            } else {
+              return new (T.LeftOfMovieErrorL$MovieDetailModelL()).new(new movie_error.MovieRepositoryError.new(constants.serverError));
+            }
+          } else if (T.ExceptionL().is(ex)) {
+            let error = ex;
+            return new (T.LeftOfMovieErrorL$MovieDetailModelL()).new(new movie_error.MovieRepositoryError.new(dart.toString(error)));
+          } else
+            throw e;
+        }
+      }).bind(this));
+    }
+    fetchMoviesByGenre(page, genre) {
+      return async.async(T.EitherLOfMovieErrorL$MovieByGenreResponseModelL(), (function* fetchMoviesByGenre() {
+        try {
+          let response = (yield this[_dio].get(dart.dynamic, "/discover/movie?page=" + dart.str(page) + "&with_genres=" + dart.str(genre)));
+          let model = movie_by_genre_response_model.MovieByGenreResponseModel.fromMap(T.MapLOfStringL$dynamic().as(response.data));
+          return new (T.RightOfMovieErrorL$MovieByGenreResponseModelL()).new(model);
+        } catch (e) {
+          let ex = dart.getThrown(e);
+          if (T.DioErrorL().is(ex)) {
+            let error = ex;
+            if (error.response != null) {
+              return new (T.LeftOfMovieErrorL$MovieByGenreResponseModelL()).new(new movie_error.MovieRepositoryError.new(T.StringL().as(dart.dsend(error.response.data, '_get', ["status_message"]))));
+            } else {
+              return new (T.LeftOfMovieErrorL$MovieByGenreResponseModelL()).new(new movie_error.MovieRepositoryError.new(constants.serverError));
+            }
+          } else if (T.ExceptionL().is(ex)) {
+            let error = ex;
+            return new (T.LeftOfMovieErrorL$MovieByGenreResponseModelL()).new(new movie_error.MovieRepositoryError.new(dart.toString(error)));
+          } else
+            throw e;
+        }
+      }).bind(this));
+    }
+  };
+  (movie_repository.MovieRepository.new = function() {
+    this[_dio] = dio.Dio.new(constants.dioOptions);
+    ;
+  }).prototype = movie_repository.MovieRepository.prototype;
+  dart.addTypeTests(movie_repository.MovieRepository);
+  dart.addTypeCaches(movie_repository.MovieRepository);
+  dart.setMethodSignature(movie_repository.MovieRepository, () => ({
+    __proto__: dart.getMethods(movie_repository.MovieRepository.__proto__),
+    fetchListGenres: dart.fnType(dart.legacy(async.Future$(dart.legacy(dartz.Either$(dart.legacy(movie_error.MovieError), dart.legacy(genres_response_model.GenreRespondeModel))))), []),
+    fetchMoviesTrending: dart.fnType(dart.legacy(async.Future$(dart.legacy(dartz.Either$(dart.legacy(movie_error.MovieError), dart.legacy(movie_trending_response_model.MovieTrendingResponseModel))))), [dart.legacy(core.int)]),
+    fetchAllMovies: dart.fnType(dart.legacy(async.Future$(dart.legacy(dartz.Either$(dart.legacy(movie_error.MovieError), dart.legacy(movie_response_model.MovieResponseModel))))), [dart.legacy(core.int)]),
+    fetchMovieById: dart.fnType(dart.legacy(async.Future$(dart.legacy(dartz.Either$(dart.legacy(movie_error.MovieError), dart.legacy(movie_detail_model.MovieDetailModel))))), [dart.legacy(core.int)]),
+    fetchMoviesByGenre: dart.fnType(dart.legacy(async.Future$(dart.legacy(dartz.Either$(dart.legacy(movie_error.MovieError), dart.legacy(movie_by_genre_response_model.MovieByGenreResponseModel))))), [dart.legacy(core.int), dart.legacy(core.int)])
+  }));
+  dart.setLibraryUri(movie_repository.MovieRepository, I[0]);
+  dart.setFieldSignature(movie_repository.MovieRepository, () => ({
+    __proto__: dart.getFields(movie_repository.MovieRepository.__proto__),
+    [_dio]: dart.finalFieldType(dart.legacy(dio.Dio))
+  }));
+  dart.trackLibraries("packages/movie_app/repositories/movie_repository.dart", {
+    "package:movie_app/repositories/movie_repository.dart": movie_repository
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["movie_repository.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAcgE;AAC5D;AACQ,0BAAW,MAAM,AAAK,6BAAI;AAC1B,sBAA2B,8EAAQ,AAAS,QAAD;AACjD,gBAAO,sDAAM,KAAK;;;AAClB;gBAAmB;AACnB,gBAAI,AAAM,KAAD;AACP,oBAAO,qDACH,wDAAwC,WAAnB,AAAM,AAAS,KAAV,yBAAe;;AAE7C,oBAAO,qDAAK,yCAAqB;;gBAEnC;gBAAoB;AACpB,kBAAO,qDAAK,yCAA2B,cAAN,KAAK;;;;MAE1C;;wBAGQ;AADkE;AAExE;AACQ,0BAAW,MAAM,AAAK,6BAAI,AAAiC,wCAAL,IAAI;AAC1D,sBAAmC,8FAAQ,AAAS,QAAD;AACzD,gBAAO,8DAAM,KAAK;;;AAClB;gBAAmB;AACnB,gBAAI,AAAM,KAAD;AACP,oBAAO,6DACH,wDAAwC,WAAnB,AAAM,AAAS,KAAV,yBAAe;;AAE7C,oBAAO,6DAAK,yCAAqB;;gBAEnC;gBAAoB;AACpB,kBAAO,6DAAK,yCAA2B,cAAN,KAAK;;;;MAE1C;;mBAGQ;AADqD;AAE3D;AACQ,0BAAW,MAAM,AAAK,6BAAI,AAA2B,kCAAL,IAAI;AACpD,sBAA2B,6EAAQ,AAAS,QAAD;AACjD,gBAAO,sDAAM,KAAK;;;AAClB;gBAAmB;AACnB,gBAAI,AAAM,KAAD;AACP,oBAAO,qDACH,wDAAwC,WAAnB,AAAM,AAAS,KAAV,yBAAe;;AAE7C,oBAAO,qDAAK,yCAAqB;;gBAEnC;gBAAoB;AACpB,kBAAO,qDAAK,yCAA2B,cAAN,KAAK;;;;MAE1C;;mBAEgE;AAAL;AACzD;AACQ,0BAAW,MAAM,AAAK,6BAAI,AAA4B,qBAAnB,EAAE;AACrC,sBAAyB,yEAAQ,AAAS,QAAD;AAC/C,gBAAO,oDAAM,KAAK;;;AAClB;gBAAmB;AACnB,gBAAI,AAAM,KAAD;AACP,oBAAO,mDACH,wDAAwC,WAAnB,AAAM,AAAS,KAAV,yBAAe;;AAE7C,oBAAO,mDAAK,yCAAqB;;gBAEnC;gBAAoB;AACpB,kBAAO,mDAAK,yCAA2B,cAAN,KAAK;;;;MAE1C;;uBAGQ,MAAU;AADsD;AAEtE;AACQ,0BACF,MAAM,AAAK,6BAAI,AAA+C,mCAAxB,IAAI,+BAAc,KAAK;AAC3D,sBAAkC,6FAAQ,AAAS,QAAD;AACxD,gBAAO,6DAAM,KAAK;;;AAClB;gBAAmB;AACnB,gBAAI,AAAM,KAAD;AACP,oBAAO,4DACH,wDAAwC,WAAnB,AAAM,AAAS,KAAV,yBAAe;;AAE7C,oBAAO,4DAAK,yCAAqB;;gBAEnC;gBAAoB;AACpB,kBAAO,4DAAK,yCAA2B,cAAN,KAAK;;;;MAE1C;;;;IAzFU,aAAO,YAAI;;EA0FvB","file":"../../../../packages/movie_app/repositories/movie_repository.dart.lib.js"}');
+  // Exports:
+  return {
+    repositories__movie_repository: movie_repository
+  };
+}));
+
+//# sourceMappingURL=movie_repository.dart.lib.js.map

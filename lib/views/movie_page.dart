@@ -6,10 +6,10 @@ import 'package:movie_app/controllers/movie_trending_controller.dart';
 import 'package:movie_app/core/constants.dart';
 import 'package:movie_app/utils/text.dart';
 import 'package:movie_app/widgets/movie_card_by_genre.dart';
-import 'package:movie_app/widgets/movie_message.dart';
-import 'package:movie_app/widgets/movie_load_progress.dart';
 import 'package:movie_app/widgets/movie_card_pop.dart';
 import 'package:movie_app/widgets/movie_card_trending.dart';
+import 'package:movie_app/widgets/movie_load_progress.dart';
+import 'package:movie_app/widgets/movie_message.dart';
 import 'movie_detail_page.dart';
 
 class MoviePage extends StatefulWidget {
@@ -23,20 +23,21 @@ class _MoviePageState extends State<MoviePage> {
   final _controllerGenres = GenreController();
   final _controllerListGenres = MovieByGenreController();
   final _scrollController = ScrollController();
-  final _scrollControlerGenres = ScrollController();
   final _scrollControllerTrending = ScrollController();
+  final _scrollControlerGenres = ScrollController();
 
   int lastPage = 1;
   int lastPageTrending = 1;
   int lastPageGenre = 1;
-  int genreMovie = 16;
+  int genreMovie = 28;
   bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
+
     _initScrollListenner();
-    _initialize();
+    _initializeMovies();
   }
 
   _initScrollListenner() {
@@ -75,7 +76,7 @@ class _MoviePageState extends State<MoviePage> {
     });
   }
 
-  _initialize() async {
+  _initializeMovies() async {
     setState(() {
       isLoading = true;
     });
@@ -91,34 +92,29 @@ class _MoviePageState extends State<MoviePage> {
     });
   }
 
+  _initializeListByGenre() async {
+    await _controllerListGenres.fetchMoviesByGenre(
+        page: lastPageGenre, genre: genreMovie);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: _buildAppBar(),
-        bottomNavigationBar: BottomAppBar(
-          child: new Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(Icons.movie),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ),
-        body: ListView(
-          children: [
-            _buildListMovies(context),
-          ],
-        ));
+      appBar: _buildAppBar(),
+      bottomNavigationBar: _buildAppBottomBar(),
+      body: ListView(
+        children: [
+          _buildListPop(),
+          _buildListTrending(),
+          _buildCaptionGenre(),
+          _buildListByGenre(context),
+        ],
+      ),
+    );
   }
 
-  _buildAppBar() {
+  Widget _buildAppBar() {
     return AppBar(
       title: ModifiedText(text: appName),
       actions: [
@@ -130,40 +126,34 @@ class _MoviePageState extends State<MoviePage> {
     );
   }
 
-  Widget _buildListMovies(context) {
-    if (isLoading) {
-      return CenteredProgress();
-    }
-
-    if (_controller.movieError != null) {
-      return CenteredMessage(message: _controller.movieError.message);
-    }
-
-    if (_controllerTrending.movieError != null) {
-      return CenteredMessage(message: _controller.movieError.message);
-    }
-
-    if (_controllerGenres.movieError != null) {
-      return CenteredMessage(message: _controllerGenres.movieError.message);
-    }
-
-    if (_controllerListGenres.movieError != null) {
-      return CenteredMessage(message: _controllerListGenres.movieError.message);
-    }
-
-    return Container(
-      child: Column(
-        children: [
-          _buildListPop(),
-          _buildListTrending(),
-          _buildCaptionGenre(),
-          _buildListByGenre(),
+  Widget _buildAppBottomBar() {
+    return BottomAppBar(
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.movie),
+            onPressed: () {},
+          ),
         ],
       ),
     );
   }
 
   Widget _buildListPop() {
+    if (isLoading) {
+      return CenteredProgress();
+    }
+
+    if (_controller.movieError != null) {
+      CenteredMessage(message: _controller.movieError.message);
+    }
+
     return Container(
       padding: EdgeInsets.all(5),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -187,6 +177,14 @@ class _MoviePageState extends State<MoviePage> {
   }
 
   Widget _buildListTrending() {
+    if (isLoading) {
+      return CenteredProgress();
+    }
+
+    if (_controllerTrending.movieError != null) {
+      CenteredMessage(message: _controllerTrending.movieError.message);
+    }
+
     return Container(
       padding: EdgeInsets.all(5),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -209,60 +207,72 @@ class _MoviePageState extends State<MoviePage> {
     );
   }
 
-  Widget _buildListByGenre() {
+  Widget _buildCaptionGenre() {
+    if (_controllerGenres.movieError != null) {
+      CenteredMessage(message: _controllerGenres.movieError.message);
+    }
+
     return Container(
       padding: EdgeInsets.all(5),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-          padding: EdgeInsets.fromLTRB(0, 0, 10, 20),
-          height: 200,
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              controller: _scrollControlerGenres,
-              itemCount: _controllerListGenres.moviesCount,
-              itemBuilder: (context, index) {
-                return _buildMovieCardByGenre(context, index);
-              }),
+        ModifiedText(
+          text: genreMoviesSearch,
+          size: 18,
         ),
+        ModifiedText(
+          text: genreSubDetail,
+          size: 12,
+        ),
+        Container(
+            //padding: EdgeInsets.only(left: 5.0),
+            padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+            height: 40,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: _controllerGenres.genresCount,
+              itemBuilder: (context, index) {
+                return ActionChip(
+                    label: ModifiedText(
+                      text: _controllerGenres.genres[index].name,
+                      size: 12,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      genreMovie = _controllerGenres.genres[index].id;
+                      _controllerListGenres.movies.clear();
+                      _initializeListByGenre();
+                    });
+              },
+              separatorBuilder: (context, index) => SizedBox(width: 5),
+            )),
       ]),
     );
   }
 
-  Widget _buildCaptionGenre() {
+  Widget _buildListByGenre(context) {
+    if (isLoading) {
+      return CenteredProgress();
+    }
+
+    if (_controllerTrending.movieError != null) {
+      CenteredMessage(message: _controllerTrending.movieError.message);
+    }
+
     return Container(
         padding: EdgeInsets.all(5),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          ModifiedText(
-            text: genreMoviesSearch,
-            size: 18,
-          ),
-          ModifiedText(
-            text: genreSubDetail,
-            size: 12,
-          ),
           Container(
-              padding: EdgeInsets.only(left: 5.0),
-              height: 40,
-              child: ListView.separated(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: _controllerGenres.genresCount,
-                itemBuilder: (context, index) {
-                  return ActionChip(
-                      label: ModifiedText(
-                        text: _controllerGenres.genres[index].name,
-                        size: 12,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _controllerListGenres.movies.clear();
-                          genreMovie = _controllerGenres.genres[index].id;
-                        });
-                      });
-                },
-                separatorBuilder: (context, index) => SizedBox(width: 5),
-              )),
+            padding: EdgeInsets.fromLTRB(0, 0, 10, 20),
+            height: 200,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              controller: _scrollControlerGenres,
+              itemCount: _controllerListGenres.moviesCount,
+              itemBuilder: (context, index) =>
+                  _buildMovieCardByGenre(context, index),
+            ),
+          ),
         ]));
   }
 

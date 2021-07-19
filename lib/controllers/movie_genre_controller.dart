@@ -12,6 +12,7 @@ class GenreController {
 
   List<MovieGenre> get genres => genreResponseModel?.genres ?? <MovieGenre>[];
   int get genresCount => genres.length;
+  bool get hasMovies => genresCount != 0;
 
   Future<Either<MovieError, GenreRespondeModel>> fetchListGenres() async {
     movieError = null;
@@ -21,7 +22,7 @@ class GenreController {
       (genre) {
         if (genreResponseModel == null) {
           genreResponseModel = genre;
-        } else {}
+        }
       },
     );
 
